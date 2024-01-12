@@ -22,7 +22,13 @@ export const ChoreChampionProvider = ({ children }) => {
     };
 
     const deleteTask = (taskId) => {
-        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+        const taskToDelete = tasks.find((task) => task.id === taskId);
+
+        const deleteConfirmed = window.confirm(`Are you sure you want to delete "${taskToDelete.title}"?`);
+
+        if (deleteConfirmed) {
+            setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+        }
     };
 
     return (
