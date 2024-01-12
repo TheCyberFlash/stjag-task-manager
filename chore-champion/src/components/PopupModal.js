@@ -2,14 +2,17 @@ import React from "react";
 
 const PopupModal = ({ message, onConfirm, onCancel }) => {
     return (
-        <div className="popup-modal">
+        <div className="modal-overlay">
+            <div className="popup-modal">
             <p>{message}</p>
 
-            <div className="button-group">
+            <div>
                 <button onClick={onConfirm}>Confirm</button>
                 <button onClick={onCancel}>Cancel</button>
             </div>
         </div>
+        </div>
+
     );
 }
 
