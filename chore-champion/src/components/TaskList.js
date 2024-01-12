@@ -4,17 +4,7 @@ import { useChoreChampion } from "../context/ChoreChampionContext";
 import { Droppable } from "@hello-pangea/dnd";
 
 const TaskList = () => {
-    const { tasks, reorderTasks } = useChoreChampion();
-
-    const handleDragEnd = (result) => {
-        const { source, destination } = result;
-
-        console.log(result);
-
-        if (!destination) return;
-
-        reorderTasks(source.index, destination.index);
-    };
+    const { tasks } = useChoreChampion();    
 
     const droppableId = "task-list-" + Date.now().toString();
 
@@ -25,8 +15,10 @@ const TaskList = () => {
                     {tasks.map((task, index) => (
                         <Task key={task.id} task={task} index={index} />
                     ))}
+                    {provided.placeholder}
                 </div>        
             )}
+            
         </Droppable> 
     );
 }

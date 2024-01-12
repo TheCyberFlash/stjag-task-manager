@@ -1,16 +1,18 @@
 import React from "react";
 import TaskList from "./components/TaskList";
-import { ChoreChampionProvider } from "./context/ChoreChampionContext";
+import { ChoreChampionProvider, useChoreChampion } from "./context/ChoreChampionContext";
 import { DragDropContext } from "@hello-pangea/dnd";
 import NewTaskInput from "./components/NewTaskInput";
 
 const App = () => {
+
+  const { handleDragEnd } = useChoreChampion();
+
   return (
-    <ChoreChampionProvider>
-          <DragDropContext>
-            <AppContent />            
-          </DragDropContext>
-        </ChoreChampionProvider>
+    <DragDropContext onDragEnd={handleDragEnd}>
+      <AppContent />            
+    </DragDropContext>
+        
   )
 }
 
