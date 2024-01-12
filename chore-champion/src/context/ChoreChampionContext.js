@@ -18,11 +18,11 @@ export const ChoreChampionProvider = ({ children }) => {
     };
 
     const completeTask = (taskId) => {
-        //mark as completed - use task id to find task and update completed property to true
+        setTasks((prevTasks) => prevTasks.map((task) => task.id === taskId ? { ...task, completed: !task.completed } : task));
     };
 
     const deleteTask = (taskId) => {
-        //remove task from array, use taskId to find task
+        setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
     };
 
     return (
