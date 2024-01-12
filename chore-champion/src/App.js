@@ -39,7 +39,7 @@ const AppContent = () => {
       <div>
         <input 
           type="text" 
-          placeholder="Enter a enw task" 
+          placeholder="Enter a new task" 
           value={newTask} 
           onChange={(event) => setNewTask(event.target.value)} 
           onKeyDown={handleKeyDown} 
