@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import PopupModal from "../components/PopupModal";
 
 const ChoreChampionContext = createContext();
 
@@ -6,6 +7,9 @@ export const ChoreChampionProvider = ({ children }) => {
 
     const savedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
     const [tasks, setTasks] = useState(savedTasks);
+    const [showModal, setShowModal] = useState(false);
+    const [modelAction, setModalAction] = useState(null);
+    const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -22,18 +26,31 @@ export const ChoreChampionProvider = ({ children }) => {
     };
 
     const deleteTask = (taskId) => {
-        const taskToDelete = tasks.find((task) => task.id === taskId);
+        setTaskIdToDelete(taskId);
+        setModalAction("delete");
+        setShowModal(true);
+    };
 
-        const deleteConfirmed = window.confirm(`Are you sure you want to delete "${taskToDelete.title}"?`);
-
-        if (deleteConfirmed) {
-            setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+    const handleConfirm = () => {
+        if (modelAction === "delete") {
+            setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskIdToDelete));
         }
+
+        setShowModal(false);
+        setTaskIdToDelete(null);
+        setModalAction(null);
+    }
+
+    const handleCancel = () => {
+        setShowModal(false);
+        setTaskIdToDelete(null);
+        setModalAction(null);
     };
 
     return (
         <ChoreChampionContext.Provider value={{ tasks, addTask, completeTask, deleteTask }}>
             {children}
+            {showModal && <PopupModal message={`Are you sure you want to ${modelAction} this "${tasks.find((task) => task.id === taskIdToDelete)?.title}"?`} onConfirm={handleConfirm} onCancel={handleCancel} />}
         </ChoreChampionContext.Provider>
     );
 };
