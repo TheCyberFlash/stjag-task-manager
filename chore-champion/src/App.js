@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TaskList from "./components/TaskList";
 import { ChoreChampionProvider, useChoreChampion, handleDragEnd } from "./context/ChoreChampionContext";
-import { DragDropContext } from "react-beautiful-dnd";
+import { DragDropContext } from "@hello-pangea/dnd";
 
 const App = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import Task from "./Task";
 import { useChoreChampion } from "../context/ChoreChampionContext";
-import { Droppable } from "react-beautiful-dnd";
+import { Droppable } from "@hello-pangea/dnd";
 
 const TaskList = () => {
     const { tasks, reorderTasks } = useChoreChampion();

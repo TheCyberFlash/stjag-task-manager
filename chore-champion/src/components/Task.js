@@ -2,7 +2,7 @@ import React from "react";
 import { useChoreChampion } from "../context/ChoreChampionContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { Draggable } from "react-beautiful-dnd";
+import { Draggable } from "@hello-pangea/dnd";
 
 const Task = ({ task, index }) => {
     const { completeTask, deleteTask } = useChoreChampion();
