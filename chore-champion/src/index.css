@@ -14,7 +14,9 @@ body {
   width: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   margin-top: 45px;
-  min-height: 550px;  
+  min-height: 550px;
+  flex-direction: column;
+  position: relative;  
 }
 
 .task-item {
@@ -57,24 +59,33 @@ body {
   margin-right: 10px;
 }
 
-input {
-  width: 70%;
-  padding: 8px;
-  margin-right: 10px;
+.task-list {
+  margin-bottom: 45px;
+}
+
+.new-task-input {
+  position: absolute;
+  bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.new-task-input input {
+  flex: 1;
+  padding: 14px;
+  margin-right: 50px;
   border: 1px solid #ddd;
   border-radius: 4px;
   outline: none;
-  display: inline-block;
 }
 
-button {
+.new-task-input button {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 15px;
+  padding: 14px 30px;
   border-radius: 4px;
-  cursor: pointer;
-  display: inline-block;
+  cursor: pointer;  
 }
 
 .modal-overlay {
