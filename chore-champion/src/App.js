@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import TaskList from "./components/TaskList";
+import { ChoreChampionProvider, useChoreChampion } from "./context/ChoreChampionContext";
+import Task from "./components/Task";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ChoreChampionProvider>
+      <AppContent />
+    </ChoreChampionProvider>
+  )
+}
+
+const AppContent = () => {
+  const [newTask, setNewTask] = useState("");
+  const {tasks, addTask} = useChoreChampion();
+
+  const handleAddTask = (event) => {
+    event.preventDefault();
+
+    if (newTask.trim !== "") {
+      addTask(newTask.trim());
+      setNewTask("");
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleAddTask(event);
+    }
+  };
+
+  return (
+    <div className="container">
+      <h1>Chore Champion</h1>
+
+      <TaskList />
+
+      <div>
+        <input 
+          type="text" 
+          placeholder="Enter a enw task" 
+          value={newTask} 
+          onChange={(event) => setNewTask(event.target.value)} 
+          onKeyDown={handleKeyDown} 
+        />
+
+        <button onClick={handleAddTask}>Add Task</button>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
