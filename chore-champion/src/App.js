@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import TaskList from "./components/TaskList";
-import { ChoreChampionProvider, useChoreChampion } from "./context/ChoreChampionContext";
-import Task from "./components/Task";
+import { ChoreChampionProvider, useChoreChampion, handleDragEnd } from "./context/ChoreChampionContext";
+import { DragDropContext } from "react-beautiful-dnd";
 
 const App = () => {
   return (
     <ChoreChampionProvider>
-      <AppContent />
-    </ChoreChampionProvider>
+          <DragDropContext>
+            <AppContent />            
+          </DragDropContext>
+        </ChoreChampionProvider>
   )
 }
 

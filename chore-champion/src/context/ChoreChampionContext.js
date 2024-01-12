@@ -47,8 +47,16 @@ export const ChoreChampionProvider = ({ children }) => {
         setModalAction(null);
     };
 
+    const reorderTasks = (startIndex, endIndex) => {
+        const updatedTasks = [...tasks];
+        const [removedTask] = updatedTasks.splice(startIndex, 1);
+        updatedTasks.splice(endIndex, 0, removedTask);
+
+        setTasks(updatedTasks);
+    };
+
     return (
-        <ChoreChampionContext.Provider value={{ tasks, addTask, completeTask, deleteTask }}>
+        <ChoreChampionContext.Provider value={{ tasks, addTask, completeTask, deleteTask, reorderTasks }}>
             {children}
             {showModal && <PopupModal message={`Are you sure you want to ${modelAction} this "${tasks.find((task) => task.id === taskIdToDelete)?.title}"?`} onConfirm={handleConfirm} onCancel={handleCancel} />}
         </ChoreChampionContext.Provider>
