@@ -1,15 +1,13 @@
 {
   "files": {
-    "main.css": "/thecyberflash.github.io/stjag-task-manager/static/css/main.5718626a.css",
-    "main.js": "/thecyberflash.github.io/stjag-task-manager/static/js/main.29d2264d.js",
-    "static/js/787.37a519dd.chunk.js": "/thecyberflash.github.io/stjag-task-manager/static/js/787.37a519dd.chunk.js",
-    "index.html": "/thecyberflash.github.io/stjag-task-manager/index.html",
-    "main.5718626a.css.map": "/thecyberflash.github.io/stjag-task-manager/static/css/main.5718626a.css.map",
-    "main.29d2264d.js.map": "/thecyberflash.github.io/stjag-task-manager/static/js/main.29d2264d.js.map",
-    "787.37a519dd.chunk.js.map": "/thecyberflash.github.io/stjag-task-manager/static/js/787.37a519dd.chunk.js.map"
+    "main.css": "/stjag-task-manager/static/css/main.5718626a.css",
+    "main.js": "/stjag-task-manager/static/js/main.5921ebef.js",
+    "index.html": "/stjag-task-manager/index.html",
+    "main.5718626a.css.map": "/stjag-task-manager/static/css/main.5718626a.css.map",
+    "main.5921ebef.js.map": "/stjag-task-manager/static/js/main.5921ebef.js.map"
   },
   "entrypoints": [
     "static/css/main.5718626a.css",
-    "static/js/main.29d2264d.js"
+    "static/js/main.5921ebef.js"
   ]
 }
