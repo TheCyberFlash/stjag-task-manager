@@ -23,7 +23,17 @@ export const ChoreChampionProvider = ({ children }) => {
 
     const completeTask = (taskId) => {
         setTasks((prevTasks) => prevTasks.map((task) => task.id === taskId ? { ...task, completed: !task.completed } : task));
+
+        reorderCompleteTask(taskId);
     };
+
+    const reorderCompleteTask = (taskId) => {
+        setTimeout(() => {
+            const completeTaskIndex = tasks.findIndex((task) => task.id === taskId);
+        const bottomIndex = tasks.length - 1;
+        reorderTasks(completeTaskIndex, bottomIndex);
+        }, 500);
+    }
 
     const deleteTask = (taskId) => {
         setTaskIdToDelete(taskId);
