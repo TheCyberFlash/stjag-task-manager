@@ -22,17 +22,31 @@ export const ChoreChampionProvider = ({ children }) => {
     };
 
     const completeTask = (taskId) => {
-        setTasks((prevTasks) => prevTasks.map((task) => task.id === taskId ? { ...task, completed: !task.completed } : task));
 
-        reorderCompleteTask(taskId);
+        setTasks((prevTasks) => {
+            const updatedTasks = prevTasks.map((task) => task.id === taskId ? { ...task, completed: !task.completed } : task);
+
+            const completedTask = updatedTasks.find((task) => task.id === taskId && task.completed);
+            if (completedTask)
+            {
+                reorderCompleteTask(taskId);
+            }
+
+            return updatedTasks;
+        
+        });        
     };
 
     const reorderCompleteTask = (taskId) => {
         setTimeout(() => {
             const completeTaskIndex = tasks.findIndex((task) => task.id === taskId);
-        const bottomIndex = tasks.length - 1;
-        reorderTasks(completeTaskIndex, bottomIndex);
-        }, 500);
+
+            const bottomIndex = tasks.length - 1;
+            reorderTasks(completeTaskIndex, bottomIndex);
+
+            setTasks((prevTasks) => prevTasks.map((task) => task.id === taskId ? { ...task, completed: !task.completed } : task));
+
+            }, 500);
     }
 
     const deleteTask = (taskId) => {
